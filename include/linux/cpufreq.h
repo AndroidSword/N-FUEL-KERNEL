@@ -104,6 +104,13 @@ struct cpufreq_policy {
 	unsigned int		max;    /* in kHz */
 	unsigned int		cur;    /* in kHz, only needed if cpufreq
 					 * governors are used */
+
+	unsigned int		restore_freq; /* = policy->cur before transition */
+	unsigned int		suspend_freq; /* freq to set during suspend */
+	unsigned int		util;	/* CPU utilization at max frequency */
+	unsigned int		load_at_max;  /* CPU utilization at max frequency */
+
+
 	unsigned int		policy; /* see above */
 	struct cpufreq_governor	*governor; /* see below */
 	void			*governor_data;
@@ -335,6 +342,7 @@ struct cpufreq_policy *cpufreq_cpu_get(unsigned int cpu);
 void cpufreq_cpu_put(struct cpufreq_policy *data);
 const char *cpufreq_get_current_driver(void);
 
+
 /*********************************************************************
  *                        CPUFREQ 2.6. INTERFACE                     *
  *********************************************************************/
@@ -348,6 +356,14 @@ struct kobject *get_governor_parent_kobj(struct cpufreq_policy *policy);
 unsigned int cpufreq_get(unsigned int cpu);
 #else
 static inline unsigned int cpufreq_get(unsigned int cpu)
+=======
+void cpufreq_notify_utilization(struct cpufreq_policy *policy,
+		unsigned int load);
+
+#else /* CONFIG_CPU_FREQ */
+static inline int cpufreq_register_notifier(struct notifier_block *nb,
+						unsigned int list)
+
 {
 	return 0;
 }
