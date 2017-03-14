@@ -65,8 +65,11 @@ config CPU_FREQ_DEFAULT_GOV_ALUCARD
 	select CPU_FREQ_GOV_ALUCARD
 	help
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ab24fb674... cpufreq: barry_allen Governor
 config CPU_FREQ_DEFAULT_GOV_BARRY_ALLEN
 	bool "barry_allen"
 	select CPU_FREQ_GOV_BARRY_ALLEN
@@ -76,7 +79,10 @@ config CPU_FREQ_DEFAULT_GOV_BARRY_ALLEN
 	  loading your cpufreq low-level hardware driver, using the
 	  'barry_allen' governor for latency-sensitive workloads.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ab24fb674... cpufreq: barry_allen Governor
 config CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
 	bool "conservative"
 	select CPU_FREQ_GOV_CONSERVATIVE
@@ -166,7 +172,10 @@ config CPU_FREQ_GOV_BARRY_ALLEN
 
 	  If in doubt, say N.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ab24fb674... cpufreq: barry_allen Governor
 
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
