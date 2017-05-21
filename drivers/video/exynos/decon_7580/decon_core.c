@@ -31,8 +31,10 @@
 #include <linux/bug.h>
 #include <linux/of_address.h>
 #include <linux/smc.h>
-
 #include <mach/regs-clock.h>
+#ifdef CONFIG_STATE_NOTIFIER
+#include <linux/state_notifier.h>
+#endif 
 #include <media/exynos_mc.h>
 #include <video/mipi_display.h>
 #include <video/videonode.h>
@@ -913,6 +915,9 @@ static int decon_blank(int blank_mode, struct fb_info *info)
 			decon_err("failed to disable decon\n");
 			goto blank_exit;
 		}
+#ifdef CONFIG_STATE_NOTIFIER
+		state_suspend();
+#endif
 		break;
 	case FB_BLANK_UNBLANK:
 		ret = decon_enable(decon);
@@ -924,6 +929,9 @@ static int decon_blank(int blank_mode, struct fb_info *info)
 			goto blank_exit;
 		}
 		break;
+#ifdef CONFIG_STATE_NOTIFIER
+		state_resume();
+#endif
 	case FB_BLANK_VSYNC_SUSPEND:
 	case FB_BLANK_HSYNC_SUSPEND:
 	default:
