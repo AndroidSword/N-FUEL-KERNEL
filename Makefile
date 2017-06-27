@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 10
 SUBLEVEL = 61
-EXTRAVERSION = fuel-kernel-v1.0
+EXTRAVERSION = 
 NAME = TOSSUG Baby Fish
 
 #TOOLCHAIN_DIR = $(CURDIR)/toolchain/aarch64-linux-gnu-5.3/bin/aarch64-
