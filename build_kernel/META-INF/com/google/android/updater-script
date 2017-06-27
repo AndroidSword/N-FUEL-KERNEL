@@ -23,21 +23,6 @@ ui_print("Extracting Kernel files...");
 package_extract_file("sickness/boot.img", "/dev/block/platform/15570000.ufs/by-name/BOOT");
 
 ui_print(" ");
-package_extract_dir("supersu", "/tmp/supersu");
-run_program("/sbin/busybox", "unzip", "/tmp/supersu/BETA-SuperSU-v2.74.zip", "META-INF/com/google/android/*", "-d", "/tmp/supersu");
-run_program("/sbin/busybox", "sh", "/tmp/supersu/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/supersu/BETA-SuperSU-v2.74.zip");
-
-ui_print(" ");
-ui_print("Clean up busybox & applets...");
-package_extract_dir("busybox", "/tmp/busybox");
-run_program("/sbin/busybox", "unzip", "/tmp/busybox/BusyBox-Cleaner-YDS.zip", "META-INF/com/google/android/*", "-d", "/tmp/busybox");
-run_program("/sbin/busybox", "sh", "/tmp/busybox/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/busybox/BusyBox-Cleaner-YDS.zip");
-
-ui_print(" ");
-ui_print("Mounting System...");
-run_program("/sbin/mount", "/dev/block/platform/15570000.ufs/by-name/SYSTEM", "/system");
-
-ui_print(" ");
 ui_print("Remove modules & sqlite3");
 delete_recursive("/system/lib/modules");
 delete("/system/xbin/sqlite3", "/system/bin/sqlite3");
