@@ -86,6 +86,9 @@ static int cpufreq_governor_dbs(struct cpufreq_policy *policy,
 #ifndef CONFIG_CPU_FREQ_DEFAULT_GOV_electrodemand
 static
 #endif
+
+struct cpufreq_governor;
+
 struct cpufreq_governor cpufreq_gov_electrodemand = {
        .name                   = "electrodemand",
        .governor               = cpufreq_governor_dbs,
