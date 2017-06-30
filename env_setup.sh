@@ -67,7 +67,7 @@ export SUB_ARCH=arm64;
 
 # N920G
 if [ "$TARGET" = "N920G" ] ; then
-	export KERNEL_CONFIG="exynos7420-noblelte_mea_jv_defconfig";
+	export KERNEL_CONFIG="exynos7420-noblelte_fuelkernel_defconfig";
 fi;
 
 # G925T
