@@ -1,0 +1,30 @@
+# Copyright (C) 2012 The Android Open Source Project
+#
+# IMPORTANT: Do not create world writable files or directories.
+# This is a common source of Android security bugs.
+#
+
+on property:sys.boot_completed=1
+    start flashinit
+    start flashsysinit
+    start wakelock
+
+service flashinit /sbin/flashinit.sh
+    user root
+    seclabel u:r:init:s0
+    oneshot
+    disabled
+
+service flashsysinit /sbin/flashsysinit.sh
+    class late_start
+    user root
+    seclabel u:r:init:s0
+    oneshot
+    disabled
+
+service wakelock /sbin/wakelock.sh
+    class late_start
+    user root
+    seclabel u:r:init:s0
+    oneshot
+    disabled
